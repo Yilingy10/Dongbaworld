@@ -1214,6 +1214,11 @@ const INST={harmonica:{t:['吹口琴','Play the harmonica'],dur:4.4},flute:{t:['
   handdrum:{t:['敲小手鼓','Beat the hand drum'],dur:3.6},conch:{t:['吹法螺','Blow the conch'],dur:3.6},bells:{t:['摇马铃','Shake the horse bells'],dur:3},
   drum:{t:['敲大皮鼓','Beat the big drum'],dur:3.4},gong:{t:['敲大铜锣','Strike the gong'],dur:3.6}};
 function audio(){AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.resume)AC.resume();return AC}
+{const unlock=()=>{try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}
+  try{const c=audio();const b=c.createBuffer(1,1,22050),src=c.createBufferSource();src.buffer=b;src.connect(c.destination);src.start(0);
+    if(c.state==='running')for(const ev of ['touchend','click','keydown'])removeEventListener(ev,unlock,true)}catch(e){}};
+ for(const ev of ['touchend','click','keydown'])addEventListener(ev,unlock,true);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&AC&&AC.state!=='running')AC.resume&&AC.resume()})}
 function noiseBuf(){if(!audio.nb){const b=AC.createBuffer(1,AC.sampleRate,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;audio.nb=b}return audio.nb}
 function env(g,t,a,peak,hold,rel){g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(peak,t+a);g.gain.setValueAtTime(peak,t+a+hold);g.gain.exponentialRampToValueAtTime(.0005,t+a+hold+rel)}
 function tone(type,f,t,dur,peak,dest,opt={}){const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(opt.to)o.frequency.exponentialRampToValueAtTime(opt.to,t+(opt.glide||dur));
