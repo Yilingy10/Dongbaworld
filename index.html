@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Dongba World</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,6 +322,47 @@ button:focus-visible,.note-item:focus-visible{outline:3px solid var(--ember);out
 #banner,#banner b,#pose,#pose .zh,#pose #poseEn,#pose .px,#held{font-family:"Silkscreen","DotGothic16",ui-monospace,monospace!important;font-weight:400!important;letter-spacing:.03em}
 body[data-lang="zh"] #banner,body[data-lang="zh"] #banner b,body[data-lang="zh"] #pose,body[data-lang="zh"] #pose .zh,body[data-lang="zh"] #pose .px,body[data-lang="zh"] #held{font-family:"DotGothic16","Silkscreen",monospace!important}
 #pose .zh{font-size:19px}#banner{font-size:15px}
+
+/* ---------- touch / phone ---------- */
+@media (max-height:520px){#study .spaper{width:min(440px,100%,max(250px,calc(100vh - 70px)))}#study .sgrid{max-height:none}}
+@media (max-width:600px){#stars .sbody{flex-direction:column}#stars .sinfo{width:auto!important;max-height:30vh}#stars .scopewrap{min-height:300px}}
+body.uiopen #joy,body.uiopen #tbtns,body.uiopen #prompt{display:none!important}
+body.touch .modal{padding:16px 14px!important}body.touch .modal>.close,body.touch #dress .close,body.touch #stars .close{top:12px!important;right:12px!important}
+
+#joy,#tbtns{display:none}
+body.touch{overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+body.touch #gl{touch-action:none}
+body.touch button{touch-action:manipulation}
+body.touch #controls{display:none}
+body.touch #joy{display:block;position:fixed;left:calc(20px + env(safe-area-inset-left));bottom:calc(20px + env(safe-area-inset-bottom));width:136px;height:136px;border-radius:50% 48% 52% 49%/49% 52% 48% 51%;background:rgba(250,244,228,.26);border:2px solid rgba(59,55,50,.32);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);touch-action:none;z-index:6}
+body.touch #joy::after{content:"";position:absolute;inset:14px;border-radius:50%;border:1.5px dashed rgba(59,55,50,.18)}
+#joy i{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:49% 52% 48% 51%/52% 48% 51% 49%;background:rgba(250,244,228,.62);border:2px solid rgba(59,55,50,.5);box-shadow:0 2px 6px rgba(40,30,15,.15);pointer-events:none}
+#joy.on i{background:rgba(255,248,232,.85)}
+body.touch #tbtns{display:grid;position:fixed;right:calc(18px + env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));grid-template-columns:auto auto;grid-template-rows:auto auto;gap:10px;align-items:end;justify-items:center;z-index:6}
+#tbtns .tb{width:58px;height:58px;border-radius:50% 47% 53% 49%/48% 53% 47% 52%;border:2px solid rgba(59,55,50,.45);background:rgba(250,244,228,.4);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);color:var(--ink);font:400 12px var(--display);letter-spacing:.02em;padding:0;touch-action:none}
+body[data-lang="zh"] #tbtns .tb{font:500 15px "Noto Sans SC",sans-serif}
+#tbtns .tb.big{width:76px;height:76px;font-size:14px;grid-column:2;grid-row:2}
+body[data-lang="zh"] #tbtns .tb.big{font-size:18px}
+#tbSit{grid-column:1;grid-row:2}#tbDrop{grid-column:2;grid-row:1;display:none}#tbtns.held #tbDrop{display:block}
+#tbtns .tb:active,#tbtns .tb.on{background:rgba(255,236,214,.8);border-color:rgba(192,96,46,.7)}
+body.touch #prompt{cursor:pointer;bottom:calc(30px + env(safe-area-inset-bottom));max-width:calc(100vw - 360px);white-space:normal;text-align:center;font-size:14px;z-index:5}
+body.touch #title{left:calc(14px + env(safe-area-inset-left));top:calc(10px + env(safe-area-inset-top))}
+body.touch #title h1{font-size:20px}
+body.touch #topbtns{top:calc(8px + env(safe-area-inset-top));bottom:auto;right:calc(10px + env(safe-area-inset-right));max-width:calc(100vw - 200px);gap:6px}
+body.touch #topbtns button{padding:5px 8px!important;font-size:11px!important;min-height:0!important}
+body.touch #left{top:calc(52px + env(safe-area-inset-top));bottom:auto;left:calc(10px + env(safe-area-inset-left));width:min(300px,42vw)}
+body.touch #log{display:block;font-size:12px;padding:6px 8px}
+body.touch #pose{display:flex;top:calc(52px + env(safe-area-inset-top));bottom:auto;right:calc(10px + env(safe-area-inset-right));transform:scale(.72);transform-origin:top right}
+body.touch #banner{top:calc(54px + env(safe-area-inset-top));font-size:13px}
+body.touch #card{top:calc(52px + env(safe-area-inset-top));max-height:calc(100% - 230px)}
+@media (max-width:600px){
+  body.touch #topbtns{top:calc(44px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));right:auto;max-width:calc(100vw - 20px);justify-content:flex-start}
+  body.touch #left{top:calc(86px + env(safe-area-inset-top));width:calc(100vw - 20px)}
+  body.touch #pose{display:none}
+  body.touch #prompt{max-width:calc(100vw - 32px);bottom:calc(178px + env(safe-area-inset-bottom))}
+  body.touch #card{top:calc(86px + env(safe-area-inset-top));right:10px;left:10px;width:auto}
+  body.touch #banner{top:calc(132px + env(safe-area-inset-top));white-space:normal;width:calc(100vw - 30px);flex-wrap:wrap;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -347,6 +388,8 @@ body[data-lang="zh"] #banner,body[data-lang="zh"] #banner b,body[data-lang="zh"]
   <div id="swatches" aria-label="Your ink colour"></div><div id="held"></div></div>
 </div>
 <div id="prompt" class="frame"></div>
+<div id="joy" aria-hidden="true"><i></i></div>
+<div id="tbtns"><button type="button" id="tbDrop" class="tb"></button><button type="button" id="tbSit" class="tb"></button><button type="button" id="tbJump" class="tb big"></button></div>
 <div id="banner" aria-live="polite"></div>
 <div id="tip"></div>
 <div id="card" class="frame" role="dialog" aria-label="Details"></div>
@@ -753,23 +796,33 @@ function spawnVillagers(){
 const POSE_H={sit:.82,sleep:.8,jump:1,dance:1.05,bend:.95,ride:1.45,cart:1.3,hug:1};
 
 // ================= input =================
-const keys=new Set();
+const keys=new Set();const JOY={x:0,z:0,m:0,id:null};let TOUCH=false;
+const RUN=()=>keys.has('shift')||JOY.m>.9;
+const MOVEKEY=()=>JOY.m>.18||['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].some(k=>keys.has(k));
+function doJump(){if(player.y<=0&&!player.locked){player.vy=6.2;player.sit=false}}
+function doSit(){if(!player.locked)player.sit=!player.sit}
+function doDrop(){if(player.held&&!player.act){if(player.held.kind==='standee')putAnimalDown();else{logLine(player.held.g,`放下了 ${info(player.held.g).zh} · put down the ${info(player.held.g).en}`);dropItem(player)}}}
 addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('button'))return;const k=e.key.toLowerCase();keys.add(k);
   if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();
-  if(k===' '&&player.y<=0&&!player.locked){player.vy=6.2;player.sit=false}
-  if(k==='c'&&!player.locked)player.sit=!player.sit;
+  if(k===' ')doJump();
+  if(k==='c')doSit();
   if(k==='f')onF();
-  if(k==='g'&&player.held&&!player.act){if(player.held.kind==='standee')putAnimalDown();else{logLine(player.held.g,`放下了 ${info(player.held.g).zh} · put down the ${info(player.held.g).en}`);dropItem(player)}}
+  if(k==='g')doDrop();
   if(k==='escape'){dressEl.style.display='none';starEl.style.display='none';closeCard();notesEl.style.display='none'}});
 addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
 addEventListener('blur',()=>keys.clear());
 cv.addEventListener('wheel',e=>{e.preventDefault();cam.dist=clamp(cam.dist*(1+Math.sign(e.deltaY)*.08),8,48)},{passive:false});
 let drag=null;
 cv.addEventListener('contextmenu',e=>e.preventDefault());
-cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw:cam.targetYaw,pitch:cam.pitch,moved:false};cv.setPointerCapture(e.pointerId)});
-cv.addEventListener('pointermove',e=>{if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>5)drag.moved=true;
-  if(drag.moved){cam.targetYaw=drag.yaw-dx*.006;cam.pitch=clamp(drag.pitch+dy*.003,-.45,1.1)}}hover(e.clientX,e.clientY)});
-cv.addEventListener('pointerup',e=>{if(drag&&!drag.moved){const o=pickAt(e.clientX,e.clientY);if(o)openCard(o);else closeCard()}drag=null});
+const PTS=new Map();let pinch=null;
+cv.addEventListener('pointerdown',e=>{PTS.set(e.pointerId,{x:e.clientX,y:e.clientY});cv.setPointerCapture(e.pointerId);
+  if(PTS.size>=2){const [a,b]=[...PTS.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)||1,dist:cam.dist};drag=null;return}
+  drag={x:e.clientX,y:e.clientY,yaw:cam.targetYaw,pitch:cam.pitch,moved:false}});
+const ptsEnd=e=>{PTS.delete(e.pointerId);if(PTS.size<2)pinch=null};
+cv.addEventListener('pointercancel',e=>{ptsEnd(e);drag=null});
+cv.addEventListener('pointermove',e=>{if(PTS.has(e.pointerId))PTS.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pinch&&PTS.size>=2){const [a,b]=[...PTS.values()];cam.dist=clamp(pinch.dist*pinch.d/(Math.hypot(a.x-b.x,a.y-b.y)||1),8,48);return}if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>5)drag.moved=true;
+  if(drag.moved){cam.targetYaw=drag.yaw-dx*.006;cam.pitch=clamp(drag.pitch+dy*.003,-.45,1.1)}}if(e.pointerType!=='touch')hover(e.clientX,e.clientY)});
+cv.addEventListener('pointerup',e=>{ptsEnd(e);if(drag&&!drag.moved){const o=pickAt(e.clientX,e.clientY);if(o)openCard(o);else closeCard()}drag=null});
 cv.addEventListener('pointerleave',()=>tipEl.style.display='none');
 
 // ================= camera =================
@@ -982,15 +1035,15 @@ function encFrame(e){const t=e.t,A=W.act,E=W.enc;const r={bub:null,pa:null,pb:nu
   return r}
 function updEnc(dt){for(const e of [...encounters]){e.t+=dt;const f=encFrame(e);e.frame=f;
     const pl=e.b.isPlayer;
-    if(pl&&player.locked&&(keys.has('w')||keys.has('a')||keys.has('s')||keys.has('d')||keys.has('arrowup')||keys.has('arrowdown')||keys.has('arrowleft')||keys.has('arrowright'))){endEnc(e);continue}
+    if(pl&&player.locked&&MOVEKEY()){endEnc(e);continue}
     if(e.type==='companions'){
       const lead=pl?player:e.a,fol=pl?e.a:e.b;
       if(!pl){if(stepTo(e.a,e.dest[0],e.dest[1],2.4,dt,.5))e.t=Math.max(e.t,e.dur)}
-      const ox=Math.cos(cam.yaw)*1.3,oz=-Math.sin(cam.yaw)*1.3;stepTo(fol,lead.x+ox,lead.z+oz,pl?(keys.has('shift')?9:5.2):2.4,dt,.25);
+      const ox=Math.cos(cam.yaw)*1.3,oz=-Math.sin(cam.yaw)*1.3;stepTo(fol,lead.x+ox,lead.z+oz,pl?(RUN()?9:5.2):2.4,dt,.25);
     } else if(e.type==='hand'){
       const lead=pl?player:e.a,fol=pl?e.a:e.b;
       if(!pl){if(stepTo(e.a,e.dest[0],e.dest[1],2,dt,.5))e.t=Math.max(e.t,e.dur)}
-      const hx=lead.x+Math.cos(cam.yaw)*.75,hz=lead.z-Math.sin(cam.yaw)*.75;if(Math.hypot(hx-fol.x,hz-fol.z)>.08)stepTo(fol,hx,hz,pl?(keys.has('shift')?9:5.2):2.2,dt,.05);fol.yawFix=null;
+      const hx=lead.x+Math.cos(cam.yaw)*.75,hz=lead.z-Math.sin(cam.yaw)*.75;if(Math.hypot(hx-fol.x,hz-fol.z)>.08)stepTo(fol,hx,hz,pl?(RUN()?9:5.2):2.2,dt,.05);fol.yawFix=null;
     } else if(e.type==='race'){
       if(e.t<e.go){e.a.pose='look';if(!e.b.isPlayer)e.b.pose='look';continue}
       if(!e.done){const D=e.dest;let fin=null;
@@ -1021,7 +1074,7 @@ function updDance(dt){const spb=60/dance.bpm;beatPh+=dt/spb;if(beatPh>=1){beatPh
   if(!dance.on){if(time>dance.next)startDance();return}
   dance.t+=dt;
   for(const v of villagers)if(!dance.ring.includes(v)&&v.state!=='encounter'&&v.state!=='feast'&&dance.phase!=='end')joinDance(v);
-  if(player.inDance&&(keys.has('w')||keys.has('a')||keys.has('s')||keys.has('d')||keys.has('arrowup')||keys.has('arrowdown')||keys.has('arrowleft')||keys.has('arrowright')))leaveDance(player);
+  if(player.inDance&&MOVEKEY())leaveDance(player);
   if(dance.phase==='gather'){let all=true;dance.ring.forEach((c,i)=>{const [x,z]=ringPos(i);if(c.isPlayer){c.x+=(x-c.x)*Math.min(1,dt*3);c.z+=(z-c.z)*Math.min(1,dt*3);return}if(!stepTo(c,x,z,3.4,dt,.35))all=false});
     if((all&&dance.t>3)||dance.t>11){dance.phase='dance';dance.t=0}}
   else if(dance.phase==='dance'){const bar=beatN%4;dance.off+=dt*(bar<3?.16:.03);
@@ -1521,6 +1574,10 @@ starEl.addEventListener('pointermove',e=>{const c=document.getElementById('scope
   if(e.target.id==='scope'){const r=c.getBoundingClientRect(),px=(e.clientX-r.left)*SC.dpr,py=(e.clientY-r.top)*SC.dpr;c.style.cursor=SC.hits.some(h=>px>h.x&&px<h.x+h.w&&py>h.y&&py<h.y+h.h)?'pointer':'grab'}});
 starEl.addEventListener('pointerup',e=>{const d=SC.drag;SC.drag=null;if(!d||d.moved)return;const c=document.getElementById('scope');const r=c.getBoundingClientRect(),px=(e.clientX-r.left)*SC.dpr,py=(e.clientY-r.top)*SC.dpr;
   const h=SC.hits.find(h=>px>h.x&&px<h.x+h.w&&py>h.y&&py<h.y+h.h);if(h)document.getElementById('sdetail').innerHTML=glyphDetail(h.id,h.t.name)});
+{const SP=new Map();let sp=null;
+ starEl.addEventListener('pointerdown',e=>{if(e.target.id!=='scope')return;SP.set(e.pointerId,[e.clientX,e.clientY]);if(SP.size>=2){const [a,b]=[...SP.values()];sp={d:Math.hypot(a[0]-b[0],a[1]-b[1])||1,z:SC.zoom};SC.drag=null}},true);
+ starEl.addEventListener('pointermove',e=>{if(!SP.has(e.pointerId))return;SP.set(e.pointerId,[e.clientX,e.clientY]);if(sp&&SP.size>=2){const [a,b]=[...SP.values()];SC.zoom=clamp(sp.z*(Math.hypot(a[0]-b[0],a[1]-b[1])||1)/sp.d,1,3.2);SC.drag=null;e.stopImmediatePropagation()}},true);
+ const se=e=>{SP.delete(e.pointerId);if(SP.size<2)sp=null};starEl.addEventListener('pointerup',se,true);starEl.addEventListener('pointercancel',se,true);}
 starEl.addEventListener('wheel',e=>{if(e.target.id!=='scope')return;e.preventDefault();SC.zoom=clamp(SC.zoom*(e.deltaY>0?.9:1.1),1,3.2)},{passive:false});
 starEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.x){starEl.style.display='none';cancelAnimationFrame(SC.raf);cv.focus();return}
@@ -1530,12 +1587,12 @@ starEl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)ret
 
 // ================= player =================
 function movePlayer(dt){let fx=0,fz=0;if(starEl.style.display==='flex'||warEl.style.display==='flex'||musEl.style.display==='flex'||studyEl.style.display==='flex'){player.moving=false;player.still+=dt;return}
-  if(keys.has('w')||keys.has('arrowup'))fz-=1;if(keys.has('s')||keys.has('arrowdown'))fz+=1;if(keys.has('a')||keys.has('arrowleft'))fx-=1;if(keys.has('d')||keys.has('arrowright'))fx+=1;
+  if(keys.has('w')||keys.has('arrowup'))fz-=1;if(keys.has('s')||keys.has('arrowdown'))fz+=1;if(keys.has('a')||keys.has('arrowleft'))fx-=1;if(keys.has('d')||keys.has('arrowright'))fx+=1;if(JOY.m>.18){fx+=JOY.x;fz+=JOY.z}
   if(keys.has('q'))cam.targetYaw+=dt*1.6;if(keys.has('e'))cam.targetYaw-=dt*1.6;
   player.moving=false;
   const l=Math.hypot(fx,fz);
   if(l>0&&!player.locked){player.sit=false;fx/=l;fz/=l;const c=Math.cos(cam.yaw),s=Math.sin(cam.yaw);const mx=fx*c+fz*s,mz=-fx*s+fz*c;
-    const run=keys.has('shift'),sp=player.riding?(player.riding.cart?(run?18:13):(run?14:10)):run?9:5;const nx=player.x+mx*sp*dt,nz=player.z+mz*sp*dt;
+    const run=RUN(),sp=player.riding?(player.riding.cart?(run?18:13):(run?14:10)):run?9:5;const nx=player.x+mx*sp*dt,nz=player.z+mz*sp*dt;
     if(!blocked(nx,nz)){player.x=nx;player.z=nz}else if(!blocked(nx,player.z))player.x=nx;else if(!blocked(player.x,nz))player.z=nz;
     setMove(player,mx,mz,sp);player.still=0}else player.still+=dt;
   player.vy-=18*dt;player.y=Math.max(0,player.y+player.vy*dt);if(player.y===0)player.vy=0;
@@ -2166,7 +2223,7 @@ let kitIdx=-1;const goKitchen=()=>{kitIdx=(kitIdx+1)%KITCHENS.length;const pot=K
 document.getElementById('btnHome').onclick=()=>{if(player.inDance)leaveDance(player);if(player.enc)endEnc(player.enc);player.x=0;player.z=10;cam.targetYaw=Math.round(cam.yaw/(Math.PI*2))*Math.PI*2;cv.focus()};
 const CTRL={zh:`<div><b>WASD</b>走 · <b>Shift</b>跑 · <b>Space</b>跳 · <b>C</b>坐</div><div><b>F</b>互动 · <b>G</b>放下 · 点字看释义</div><div><b>Q</b><b>E</b>转向 · 右键拖动 · 滚轮缩放</div>`,
   en:`<div><b>WASD</b>move · <b>Shift</b>run · <b>Space</b>jump · <b>C</b>sit</div><div><b>F</b>interact · <b>G</b>drop · click glyphs</div><div><b>Q</b><b>E</b>turn · right-drag · wheel zoom</div>`};
-function applyLang(){document.body.dataset.lang=LANG;document.documentElement.lang=LANG==='en'?'en':'zh-CN';
+function applyLang(){document.body.dataset.lang=LANG;if(TOUCH)touchLabels();document.documentElement.lang=LANG==='en'?'en':'zh-CN';
   const set=(id,t)=>{const e=document.getElementById(id);if(e)e.textContent=t};
   set('lbNotes',T('字形笔记','Notes'));set('btnHome',T('篝火','Bonfire'));
   set('btnLang',T('EN','中文'));document.getElementById('btnLang').setAttribute('aria-label',T('Switch to English','切换到中文'));
@@ -2188,7 +2245,24 @@ function logLine(g,text){LOG.unshift({g,text});LOG.length=Math.min(LOG.length,2)
 function renderLog(){logRows.innerHTML=LOG.length?LOG.map(l=>`<div class="row"><img src="glyphs/${l.g}.png" alt=""><span>${esc(B(l.text))}</span></div>`).join(''):`<div class="empty">${T('村民正在走动…','Villagers are walking about…')}</div>`}
 function logEvent(a,b,type){const E=ENC[type];const g=type==='mimic'?W.act.sing_dance:type==='argument'?W.enc.fight:W.enc[E.g];
   logLine(g,`${NZ(a)} 和 ${NZ(b)}：${E.zh} · ${NE(a)} and ${NE(b)}: ${E.en}`)}
+const tbtnsEl=document.getElementById('tbtns'),tbSitEl=document.getElementById('tbSit'),joyEl=document.getElementById('joy');
+function touchLabels(){document.getElementById('tbJump').textContent=T('跳','JUMP');tbSitEl.textContent=T('坐','SIT');document.getElementById('tbDrop').textContent=T('放下','DROP')}
+function enableTouch(){if(TOUCH)return;TOUCH=true;document.body.classList.add('touch');touchLabels()}
+if((matchMedia('(pointer:coarse)').matches&&matchMedia('(hover:none)').matches)||/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent))enableTouch();
+addEventListener('pointerdown',e=>{if(e.pointerType==='touch')enableTouch()},true);
+{const knob=joyEl.querySelector('i');
+ const set=e=>{const r=joyEl.getBoundingClientRect(),R=r.width/2;let dx=(e.clientX-r.left-R)/(R*.78),dy=(e.clientY-r.top-R)/(R*.78);const m=Math.hypot(dx,dy);if(m>1){dx/=m;dy/=m}
+   JOY.x=dx;JOY.z=dy;JOY.m=Math.min(1,m);knob.style.transform=`translate(${dx*R*.62}px,${dy*R*.62}px)`};
+ const end=e=>{if(e.pointerId!==JOY.id)return;JOY.id=null;JOY.x=JOY.z=JOY.m=0;knob.style.transform='';joyEl.classList.remove('on')};
+ joyEl.addEventListener('pointerdown',e=>{e.preventDefault();JOY.id=e.pointerId;joyEl.setPointerCapture(e.pointerId);joyEl.classList.add('on');set(e)});
+ joyEl.addEventListener('pointermove',e=>{if(e.pointerId===JOY.id)set(e)});
+ joyEl.addEventListener('pointerup',end);joyEl.addEventListener('pointercancel',end);joyEl.addEventListener('lostpointercapture',end);
+ const tb=(id,fn)=>document.getElementById(id).addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();fn()});
+ tb('tbJump',doJump);tb('tbSit',doSit);tb('tbDrop',doDrop);
+ document.getElementById('prompt').addEventListener('click',()=>onF());
+ for(const el of [joyEl,tbtnsEl])el.addEventListener('contextmenu',e=>e.preventDefault());}
 const promptEl=document.getElementById('prompt'),bannerEl=document.getElementById('banner'),heldEl=document.getElementById('held');let near=null,lastPose=null,promptKey='',lastHeld='';
+function KF(){return TOUCH?T('点','TAP'):'F'}
 function onF(){if(cardEl.style.display==='block'){closeCard();return}if(player.act||warEl.style.display==='flex'||musEl.style.display==='flex'||studyEl.style.display==='flex')return;const a=interaction();if(a)a.fn()}
 function hud(dt){
   let best=null,bd=4.2;
@@ -2196,18 +2270,21 @@ function hud(dt){
   if(!best)for(const o of objs){if(!o.pick||o.part||o.sky||o.far||o.x===undefined||o.role==='bird')continue;const d=Math.hypot(o.x-player.x,o.z-player.z);if(d<bd){bd=d;best=o}}
   near=best;
   let key='',html='';const act=interaction();
-  if(player.inDance){key='indance';html='<b>WASD</b>'+T('离开打跳','Leave the dance')}
+  if(player.inDance){key='indance';html=(TOUCH?T('推摇杆','Stick: '):'<b>WASD</b>')+T('离开打跳','Leave the dance')}
   else if(player.enc&&player.enc.type==='race'){const e=player.enc;const left=Math.ceil(e.go-e.t);key='race'+left+(e.done?e.win:'')+LANG;
-    html=e.done?(e.win==='b'?T('你赢了！','You won!'):T('TA 先到了','They got there first')):left>0?T(`赛跑！跑到红旗那里 · ${left}`,`Race to the red flag · ${left}`):T('跑！按住 Shift 冲刺，先到红旗的赢','Go! Hold Shift to sprint; first to the red flag wins')}
-  else if(player.enc&&player.locked){key='enc';html='<b>WASD</b>'+T('走开','Walk away')}
+    html=e.done?(e.win==='b'?T('你赢了！','You won!'):T('TA 先到了','They got there first')):left>0?T(`赛跑！跑到红旗那里 · ${left}`,`Race to the red flag · ${left}`):(TOUCH?T('跑！摇杆推到底冲刺，先到红旗的赢','Go! Push the stick all the way to sprint; first to the red flag wins'):T('跑！按住 Shift 冲刺，先到红旗的赢','Go! Hold Shift to sprint; first to the red flag wins'))}
+  else if(player.enc&&player.locked){key='enc';html=(TOUCH?T('推摇杆','Stick: '):'<b>WASD</b>')+T('走开','walk away')}
   else if(player.act){key='acting'+LANG;html=esc(player.act.text)+'…'}
-  else if(act){key=act.key+LANG+(player.held?'g':'');html=`<b>F</b>${esc(act.text)}`+(player.held&&!act.key.startsWith('drop')?' · <b>G</b>'+T('放下','Drop'):'')}
+  else if(act){key=act.key+LANG+(player.held?'g':'')+TOUCH;html=`<b>${KF()}</b>${esc(act.text)}`+(player.held&&!TOUCH&&!act.key.startsWith('drop')?' · <b>G</b>'+T('放下','Drop'):'')}
   else if(player.held){const it=player.held,v=nearVillager(3);
-    if(it.meta.use==='fire'&&Math.hypot(player.x,player.z)<5){key='fuel';html='<b>F</b>'+T('添柴','Feed the fire')}
-    else if(v){key='give'+v.id;html='<b>F</b>'+esc(T(`给 ${v.name}`,`Give it to ${v.name}`))}
-    else{key='drop';html='<b>F</b>'+esc(T(`放下 ${info(it.g).zh}`,`Put down the ${info(it.g).en}`))}}
-  else if(nearestItem(player,2)){const it=nearestItem(player,2);key='pick'+it.g+it.x;html='<b>F</b>'+esc(T(`捡起 ${info(it.g).zh}`,`Pick up the ${info(it.g).en}`))}
-  else if(best){key='n'+(best.name||best.g)+best.x;html='<b>F</b>'+esc(T(`看看 ${label(best)}`,`Look at ${label(best)}`))}
+    if(it.meta.use==='fire'&&Math.hypot(player.x,player.z)<5){key='fuel';html='<b>'+KF()+'</b>'+T('添柴','Feed the fire')}
+    else if(v){key='give'+v.id;html='<b>'+KF()+'</b>'+esc(T(`给 ${v.name}`,`Give it to ${v.name}`))}
+    else{key='drop';html='<b>'+KF()+'</b>'+esc(T(`放下 ${info(it.g).zh}`,`Put down the ${info(it.g).en}`))}}
+  else if(nearestItem(player,2)){const it=nearestItem(player,2);key='pick'+it.g+it.x;html='<b>'+KF()+'</b>'+esc(T(`捡起 ${info(it.g).zh}`,`Pick up the ${info(it.g).en}`))}
+  else if(best){key='n'+(best.name||best.g)+best.x;html='<b>'+KF()+'</b>'+esc(T(`看看 ${label(best)}`,`Look at ${label(best)}`))}
+  if(TOUCH){const hd=!!(player.held&&!player.act);if(hd!==tbtnsEl.classList.contains('held'))tbtnsEl.classList.toggle('held',hd);const so=!!player.sit;if(so!==tbSitEl.classList.contains('on'))tbSitEl.classList.toggle('on',so)}
+  if(TOUCH){const uo=notesEl.style.display==='block'||[dressEl,starEl,warEl,musEl,studyEl].some(m=>m.style.display==='flex')||!!document.querySelector('#recipes[style*="block"],#photoView[style*="flex"]');if(uo!==document.body.classList.contains('uiopen'))document.body.classList.toggle('uiopen',uo)}
+  if(key&&TOUCH)key+='t';
   if(key!==promptKey){promptKey=key;promptEl.innerHTML=html;promptEl.style.display=key?'block':'none'}
   if(dance.on){const ph=dance.phase==='gather'?T('大家围过来','gathering'):T('跳舞中','dancing');const pr=dance.phase==='gather'?0:dance.t/42;
     bannerEl.innerHTML=`<img src="glyphs/${dance.phase==='gather'?W.enc.circle:W.enc.circle_facing}.png" alt=""><div><b>${T('篝火打跳','Bonfire dance')}</b> · ${ph} · ${T(dance.ring.length+' 人',dance.ring.length+' people')}</div><div class="bar"><i style="width:${Math.round(pr*100)}%"></i></div>`;bannerEl.style.display='flex'}
@@ -2244,7 +2321,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;time+=dt;DT=
   const img=new Image();img.src='atlas.png';await img.decode();
   atlasTex=makeTex(img);buildHeight();groundTex=makeTex(paintGround());buildTerrain();buildWater();
   buildWorld();moveObservatory();addLateStations();buildNightSky();COL=objs.filter(o=>o.collide&&!o.cart);for(const K of KITCHENS)COL.push({x:K.table.x,z:K.table.z,collide:1.3});spawnVillagers();
-  if(location.hash==='#debug')window.__dw={get downloads(){return downloads},get parts(){return parts},get WATERQ(){return WATERQ},Hs:(x,z)=>Hs(x,z),openStudy:()=>openStudy(),get ST_(){return ST_},openMusic:()=>openMusic(),get MUS(){return MUS},cam,outfit,openWar:()=>openWar(),get WAR(){return WAR},renderDress:()=>renderDress(),setTod:v=>{tod=v;skyTimer=0},openDress:()=>openDress(),openStars:()=>openStars(),player,items,villagers,objs,table,pot,KITCHENS,interaction,pickAt:(x,y)=>pickAt(x,y),onF,startDance,get fireBoost(){return fireBoost},get time(){return time},get log(){return LOG}};
+  if(location.hash==='#debug')window.__dw={openDress:()=>openDress(),openStars:()=>openStars(),openRecipes:()=>openRecipes(KITCHENS[0]),notes:()=>document.getElementById('btnNotes').click(),get downloads(){return downloads},get parts(){return parts},get WATERQ(){return WATERQ},Hs:(x,z)=>Hs(x,z),openStudy:()=>openStudy(),get ST_(){return ST_},openMusic:()=>openMusic(),get MUS(){return MUS},cam,outfit,openWar:()=>openWar(),get WAR(){return WAR},renderDress:()=>renderDress(),setTod:v=>{tod=v;skyTimer=0},openDress:()=>openDress(),openStars:()=>openStars(),player,items,villagers,objs,table,pot,KITCHENS,interaction,pickAt:(x,y)=>pickAt(x,y),onF,startDance,get fireBoost(){return fireBoost},get time(){return time},get log(){return LOG}};
   gl.uniform1i(U.tex,0);gl.activeTexture(gl.TEXTURE0);
   const tryDl=()=>{try{if(window.claude&&window.claude.use)window.claude.use('downloads').then(d=>{downloads=d}).catch(()=>{})}catch(e){}};tryDl();setTimeout(tryDl,2500);setTimeout(()=>{if(!downloads&&!(window.claude&&window.claude.use))downloads={save:async({filename,data})=>{const u=URL.createObjectURL(data),el=document.createElement('a');el.href=u;el.download=filename;document.body.appendChild(el);el.click();el.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}}},3000);
   applyLang();renderSwatches();resize();updateSeen();document.getElementById('loading').remove();logLine(W.roles.pot[0],'东西两座房子前面各有一个灶台，可以做饭 · There are two kitchens, one in front of a house on each side');cv.focus();requestAnimationFrame(frame);
