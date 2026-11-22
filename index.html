@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -377,11 +377,11 @@ const rr=(a,b)=>a+rnd()*(b-a);
 const pick=a=>a[Math.floor(rnd()*a.length)];
 const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255);
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let LANG='zh';const T=(zh,en)=>LANG==='en'?en:zh;
+let LANG='en';const T=(zh,en)=>LANG==='en'?en:zh;
 const B=t=>{const i=String(t).lastIndexOf(' · ');return i<0?t:(LANG==='en'?t.slice(i+3):t.slice(0,i))};
 const GN=g=>{const i=info(g);return i?(LANG==='en'?i.en:i.zh):g};
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-LANG=store.get('dw.lang','zh')==='en'?'en':'zh';document.body.dataset.lang=LANG;document.documentElement.lang=LANG==='en'?'en':'zh-CN';
+LANG=store.get('dw.lang','en')==='zh'?'zh':'en';document.body.dataset.lang=LANG;document.documentElement.lang=LANG==='en'?'en':'zh-CN';
 document.getElementById('loadMsg').textContent=T('正在展开纸页…','Unfolding the pages…');
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
