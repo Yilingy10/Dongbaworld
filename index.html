@@ -16,12 +16,12 @@
   color-scheme: light;
 }
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}html{background:#dfe6d2}
+html,body{height:100%;margin:0}html{background:linear-gradient(#8fc3d6 0%,#b9dade 30%,#e3ead6 56%,#efead4 100%) fixed #e3ead6;overflow:hidden;overscroll-behavior:none}
 body[data-lang="en"]{--body:"Inter", "Helvetica Neue", Arial, system-ui, sans-serif}
 body[data-lang="zh"] .px,body[data-lang="zh"] #card dt,body[data-lang="zh"] #card h4,body[data-lang="zh"] #notes h3,body[data-lang="zh"] #stars h3{font-family:var(--body);text-transform:none;letter-spacing:.02em}
 body{background:#cfd8cf;color:var(--ink);font-family:var(--body);overflow:hidden;-webkit-font-smoothing:antialiased}
 #sky{position:fixed;inset:0;background:radial-gradient(50% 30% at 66% 62%,rgba(246,214,150,.75),rgba(246,214,150,0) 70%),linear-gradient(#8fc3d6 0%,#b9dade 30%,#e3ead6 56%,#efead4 100%)}
-canvas#gl{position:fixed;inset:0;width:100%;height:100%;min-width:100vw;min-height:100vh;display:block;outline:none}
+canvas#gl{position:fixed;inset:0;width:100%;height:100%;display:block;outline:none}
 .frame{background:var(--paper);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--sage-deep);border-radius:2px}
 .px{font-family:var(--display);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
 .muted{color:var(--sage-deep)}
@@ -2305,7 +2305,7 @@ function hud(dt){
 
 // ================= loop =================
 function resize(){const d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(innerWidth*d);cv.height=Math.round(innerHeight*d);gl.viewport(0,0,cv.width,cv.height)}
-addEventListener('resize',resize);addEventListener('orientationchange',()=>{for(const t of [60,250,600])setTimeout(resize,t)});if(window.visualViewport)visualViewport.addEventListener('resize',resize);
+addEventListener('resize',resize);const fixShift=()=>{if(scrollX||scrollY||(window.visualViewport&&(visualViewport.offsetLeft||visualViewport.offsetTop)))scrollTo(0,0)};addEventListener('scroll',fixShift);addEventListener('orientationchange',()=>{for(const t of [60,250,600])setTimeout(()=>{fixShift();resize()},t)});setTimeout(fixShift,300);if(window.visualViewport)visualViewport.addEventListener('resize',resize);
 let last=performance.now();
 function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;time+=dt;DT=dt;
   tickTime(dt);selectKitchen();movePlayer(dt);tickItems(dt);tickUse(dt);tickKitchen(dt);tickFeast(dt);for(const v of villagers)updVillager(v,dt);updEnc(dt);updDance(dt);separate(dt);
